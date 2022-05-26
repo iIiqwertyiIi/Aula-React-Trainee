@@ -6,38 +6,48 @@ import { useEffect, useState } from 'react';
 import Game from './components/Games';
 import { api } from './services/api';
 import Categories from './components/Categories';
+import { BrowserRouter, Routes } from 'react-router-dom';
+import MyRoutes from './routes';
 
 function App() {
 
-  const [categories, setCategories] = useState([])
+  // const [categories, setCategories] = useState([])
+  // const [games, setGames] = useState([])
 
-  useEffect(() => {
-    api.get('/categories/index').then((response) => {
-      console.log(response.data)
-      setCategories(response.data)
-    })
-  }, [])
+  // useEffect(() => {
+  //   fetchCategory()
+  //   fetchGames()
+  // }, [])
 
-  const addCategory = async (input) => {
-    const response = await api.post('/categories/create', {
-      category: {
-        name: input
-      }
-    })
-    setCategories([...categories, response.data])
+  // const fetchCategory = async () => {
+  //   const response = await api.get('/categories/index')
+  //   setCategories(response.data)
+  // }
+
+  // const fetchGames = async () => {
+  //   const response = await api.get('/games/index')
+  //   setGames(response.data)
+  // }
+
+  // const addCategory = async (input) => {
+  //   const response = await api.post('/categories/create', {
+  //     category: {
+  //       name: input
+  //     }
+  //   })
+  //   setCategories([...categories, response.data])
     
-    if(response.data){
-      alert('categoria adicionada')
-    }
-  }
+  //   if(response.data){
+  //     alert('categoria adicionada')
+  //   }
+  // }
 
   return (
-    <>
+    <BrowserRouter>
       <GlobalStyle />
       <Header />
-      <Input addCategory={addCategory} />
-      <Categories categories={categories} />
-    </>
+      <MyRoutes />
+    </ BrowserRouter>
   );
 }
 
