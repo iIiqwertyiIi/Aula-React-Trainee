@@ -12,6 +12,7 @@ export const Container = styled.div`
         border: none;
         font-size: 1.5rem;
         padding: 0 1rem;
+
     }
     
     button {
@@ -21,5 +22,8 @@ export const Container = styled.div`
         background-color: #29A2FC;
         color: white;
         font-size: 1.5rem;
+        &:hover {
+            cursor: pointer;
+        }
     }
 `;  
